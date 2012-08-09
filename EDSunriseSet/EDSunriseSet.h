@@ -19,34 +19,42 @@
 
 #import <Foundation/Foundation.h>
 
-@interface EDSunriseSet : NSObject
-{
+@interface EDSunriseSet : NSObject {
+
 @private
-    NSCalendar  *_calendar;
-    NSTimeZone  *_utcTimeZone;
     double      _latitude;
     double      _longitude;
+
+    NSCalendar  *_calendar;
+
+    NSTimeZone  *_utcTimeZone;
     NSTimeZone  *_timezone;
-    // UTC dates
-    NSDate      *_sunrise, *_sunset;
-    NSDate      *_civilTwilightStart, *_civilTwilightEnd;
-    NSDate      *_nauticalTwilightStart, *_nauticalTwilightEnd;
-    NSDate      *_astronomicalTwilightStart, *_astronomicalTwilightEnd;
-    
+
+    NSDate      *_sunrise;
+    NSDate      *_sunset;
+    NSDate      *_civilTwilightStart;
+    NSDate      *_civilTwilightEnd;
+    NSDate      *_nauticalTwilightStart;
+    NSDate      *_nauticalTwilightEnd;
+    NSDate      *_astronomicalTwilightStart;
+    NSDate      *_astronomicalTwilightEnd;
+
 }
--(EDSunriseSet*)initWithTimezone:(NSTimeZone*)timezone latitude:(double)latitude longitude:(double)longitude;
-+(EDSunriseSet*)sunrisesetWithTimezone:(NSTimeZone*)timezone latitude:(double)lat longitude:(double)longt;
--(void)calculateSunriseSunset:(NSDate*)date;
--(void)calculateTwilight:(NSDate*)date;
--(void)calculate:(NSDate*)date;
--(NSDateComponents*)localSunrise;
--(NSDateComponents*)localSunset;
--(NSDateComponents*)localCivilTwilightStart;
--(NSDateComponents*)localCivilTwilightEnd;
--(NSDateComponents*)localNauticalCivilTwilightStart;
--(NSDateComponents*)localNauticalCivilTwilightEnd;
--(NSDateComponents*)localAstronomicalTwilightStart;
--(NSDateComponents*)localAstronomicalTwilightEnd;
+
+
+- (EDSunriseSet *)initWithTimezone:(NSTimeZone *)timezone latitude:(double)lat longitude:(double)lng;
++ (EDSunriseSet *)sunrisesetWithTimezone:(NSTimeZone *)timezone latitude:(double)lat longitude:(double)lng;
+- (void)calculateSunriseSunset:(NSDate *)date;
+- (void)calculateTwilight:(NSDate *)date;
+- (void)calculate:(NSDate *)date;
+- (NSDateComponents *)localSunrise;
+- (NSDateComponents *)localSunset;
+- (NSDateComponents *)localCivilTwilightStart;
+- (NSDateComponents *)localCivilTwilightEnd;
+- (NSDateComponents *)localNauticalCivilTwilightStart;
+- (NSDateComponents *)localNauticalCivilTwilightEnd;
+- (NSDateComponents *)localAstronomicalTwilightStart;
+- (NSDateComponents *)localAstronomicalTwilightEnd;
 
 @property (readonly,retain) NSDate *sunset;
 @property (readonly,retain) NSDate *sunrise;
