@@ -103,7 +103,7 @@ static const int secondsInHour = 60*60;
   if (self) {
     _latitude   = lat;
     _longitude  = lng;
-    _timezone   = tz;
+    _timezone   = [tz copy];
     _sunrise = nil;
     _sunset = nil;
     _civilTwilightEnd = nil;
